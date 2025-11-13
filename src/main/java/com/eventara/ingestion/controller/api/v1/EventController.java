@@ -69,7 +69,7 @@ public class EventController {
     public ResponseEntity<String> ingestBatch(@RequestBody String events){
         return  ResponseEntity
                 .status(HttpStatus.NOT_IMPLEMENTED)
-                .body("Batch ingestion coming in Module 2!");
+                .body("Ba/tch ingestion coming in Module 2!");
     }
 
     @GetMapping("/test")
