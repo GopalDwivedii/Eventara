@@ -12,10 +12,11 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/events")
@@ -59,6 +60,86 @@ public class EventController {
         }
 
     }
+
+    @PostMapping("/batch")
+    @Operation(
+            summary = "Ingest multiple events",
+            description = "Submit a batch of events for processing (Coming in Module 2)"
+    )
+    public ResponseEntity<String> ingestBatch(@RequestBody String events){
+        return  ResponseEntity
+                .status(HttpStatus.NOT_IMPLEMENTED)
+                .body("Batch ingestion coming in Module 2!");
+    }
+
+    @GetMapping("/test")
+    @Operation(summary = "Test endpoint", description = "Verify the API is running")
+    public ResponseEntity<Map<String, String>> test() {
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "running");
+        response.put("service", "Eventara Ingestion Service");
+        response.put("version", "0.1.0-SNAPSHOT");
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/health")
+    @Operation(summary = "Health check", description = "Check service health")
+    public ResponseEntity<Map<String, String>> health() {
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "UP");
+        response.put("timestamp", String.valueOf(System.currentTimeMillis()));
+
+        return ResponseEntity.ok(response);
+    }
+
+
+    /**
+     * Exception handler for validation errors
+     * Catches @Valid annotation failures
+     */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<Map<String, Object>> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+
+        Map<String, Object> errors = new HashMap<>();
+        errors.put("status", "error");
+        errors.put("message", "Validation failed");
+
+        Map<String, String> fieldErrors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            fieldErrors.put(fieldName, errorMessage);
+        });
+
+        errors.put("errors", fieldErrors);
+
+        logger.warn("Validation error: {}", fieldErrors);
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(errors);
+    }
+
+    /**
+     * Generic exception handler
+     */
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<Map<String, String>> handleGenericException(Exception ex) {
+        logger.error("Unexpected error: {}", ex.getMessage(), ex);
+
+        Map<String, String> error = new HashMap<>();
+        error.put("status", "error");
+        error.put("message", "An unexpected error occurred");
+
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(error);
+    }
+
 
 
 }

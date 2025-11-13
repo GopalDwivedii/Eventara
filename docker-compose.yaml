@@ -51,3 +51,6 @@ volumes:
 # Access psql: docker-compose exec postgres psql -U postgres -d mydb
 # Restart: docker-compose restart postgres
 
+# Run Docker container terminal from your terminal: docker exec -it postgres14 bash
+# Run sql from docker container terminal: psql -U postgres -d eventara
+
