@@ -45,9 +45,9 @@ Currently in early development. Star and watch this repo to stay updated on prog
 
 ✅ Project planning & architecture design
 
-🚧 Core event ingestion service
+✅ Core event ingestion service (with Kafka)
 
-⏳ Real-time analytics engine
+🚧 Real-time analytics engine
 
 ⏳ Rule engine & alerting system
 
