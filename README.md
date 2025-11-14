@@ -87,7 +87,10 @@ Issues: GitHub Issues
 Discussions: GitHub Discussions
 
 ## License
-MIT License - see LICENSE file for details
+
+Licensed under the [Apache License 2.0](./LICENSE).
+
+You are free to use, modify, and distribute this software with proper attribution.
 
 <div align="center">
 ⭐ Star this repo if you're interested in the project!
