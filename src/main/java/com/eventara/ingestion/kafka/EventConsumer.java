@@ -1,6 +1,5 @@
 package com.eventara.ingestion.kafka;
 import com.eventara.analytics.service.ComprehensiveMetricsService;
-import com.eventara.common.dto.ComprehensiveMetricsDto;
 import com.eventara.common.dto.EventDto;
 import com.eventara.ingestion.mapper.EventMapper;
 import com.eventara.ingestion.model.entity.Event;
