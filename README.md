@@ -1,5 +1,3 @@
-Eventara 🔥
-
 <img width="1024" height="470" alt="20251114_1927_Eventara GitHub Banner_simple_compose_01ka1acqfwed3a8qzw1vzw2rr8 (1)" src="https://github.com/user-attachments/assets/106068a7-0527-498f-8b5e-02a2f9f4810c" />
 
 <div align="center">
@@ -29,7 +27,7 @@ Your Application  →  Eventara  →  Real-Time Analytics + Intelligent Alerts
 
 ## Built With Modern Tech Stack
 
-- Backend: Spring Boot microservices (Java 17+)
+- Backend: Spring Boot microservices (Java 21)
 - Messaging: Apache Kafka for high-throughput event streaming
 - Storage: PostgreSQL + TimescaleDB for time-series data
 - Cache: Redis for fast metric access
@@ -49,13 +47,15 @@ Currently in early development. Star and watch this repo to stay updated on prog
 
 ✅ Core event ingestion service (with Kafka)
 
-🚧 Real-time analytics engine
+✅ Real-time analytics engine
 
-⏳ Rule engine & alerting system
+🚧 Real-time analytics dashboard
 
-⏳ Web dashboard
+⏳Rule engine & alerting system
 
-⏳ Production deployment guides
+⏳Web dashboard
+
+⏳Production deployment guides
 
 
 ## Why Eventara?
