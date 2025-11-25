@@ -1,28 +1,39 @@
-import { useState } from 'react'
-import { ComprehensiveMetrics } from './types'
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useWebSocketMetrics } from './hooks/useWebSocket';
+import { DashboardLayout } from './components/layout/DashboardLayout';
+import { Overview } from './pages/Overview';
+import { ComingSoon } from './pages/ComingSoon';
+import './utils/chartConfig';
+import './App.css';
+import { RealTimeMonitoring } from './pages/RealTimeMonitoring';
 
 function App() {
-  const [metrics, setMetrics] = useState<ComprehensiveMetrics | null>(null)
+  const { metrics, connectionState, reconnect } = useWebSocketMetrics();
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Eventara Dashboard
-        </h1>
-        <p className="text-gray-600">
-          Real-time Event Analytics Platform
-        </p>
-        
-        <div className="mt-8 p-4 bg-white rounded-lg shadow">
-          <p className="text-sm text-gray-500">
-            Metrics: {metrics ? 'Loaded' : 'Not loaded yet'}
-          </p>
-        </div>
-      </div>
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route
+          element={
+            <DashboardLayout 
+              connectionState={connectionState} 
+              onReconnect={reconnect}
+            />
+          }
+        >
+          <Route index element={<Overview metrics={metrics} />} />
+          <Route path="/monitoring" element={<RealTimeMonitoring metrics={metrics}/>} />
+          <Route path="/events" element={<ComingSoon pageName="Event Analytics" />} />
+          <Route path="/sources" element={<ComingSoon pageName="Source Analytics" />} />
+          <Route path="/users" element={<ComingSoon pageName="User Analytics" />} />
+          <Route path="/performance" element={<ComingSoon pageName="Performance Metrics" />} />
+          <Route path="/errors" element={<ComingSoon pageName="Error Analysis" />} />
+          <Route path="/alerts" element={<ComingSoon pageName="Alerts & Anomalies" />} />
+          <Route path="/reports" element={<ComingSoon pageName="Reports" />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
