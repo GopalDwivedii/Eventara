@@ -2,29 +2,29 @@
 
 ## Phase 1: Setup
 - [x] Project created
-- [ ] Dependencies installed
-- [ ] Tailwind configured
-- [ ] Folder structure ready
+- [x] Dependencies installed
+- [x] Tailwind configured
+- [x] Folder structure ready
 
 ## Phase 2: Types
-- [ ] Metrics types defined
-- [ ] WebSocket types defined
+- [x] Metrics types defined
+- [x] WebSocket types defined
 
 ## Phase 3: WebSocket
-- [ ] WebSocket hook created
-- [ ] Connection working
-- [ ] Auto-reconnect working
+- [x] WebSocket hook created
+- [x] Connection working
+- [x] Auto-reconnect working
 
 ## Phase 4: Layout
-- [ ] Main layout created
-- [ ] Hero cards showing data
-- [ ] Health indicator working
+- [x] Main layout created
+- [x] Hero cards showing data
+- [x] Health indicator working
 
 ## Phase 5: Charts
-- [ ] Events over time chart
-- [ ] Events by type chart
-- [ ] Events by source chart
-- [ ] Throughput chart
+- [x] Events over time chart
+- [x] Events by type chart
+- [x] Events by source chart
+- [x] Throughput chart
 
 ## Phase 6: Tables
 - [ ] Top events table
