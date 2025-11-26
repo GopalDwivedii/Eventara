@@ -44,16 +44,20 @@ Your Application → Eventara → Real-Time Analytics + Intelligent Alerts
 ### Run Eventara (All Services)
 
 1. Clone the repository
-   git clone https://github.com/tusharkhatriofficial/eventara.git
-   cd eventara
 
-2. Start all services
-   docker compose up --build -d
+   `git clone https://github.com/tusharkhatriofficial/eventara.git`
+   
+   `cd eventara`
 
-3. Wait ~30 seconds for all services to be ready
-   docker compose logs -f
+3. Start all services
 
-4. Access the services:
+   `docker compose up --build -d`
+
+4. Wait ~30 seconds for all services to be ready
+
+   `docker compose logs -f`
+
+5. Access the services:
 
 | Service | URL | Description |
 |--------|-----|-------------|
