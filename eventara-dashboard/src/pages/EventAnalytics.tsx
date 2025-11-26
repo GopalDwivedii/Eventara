@@ -113,7 +113,7 @@ export const EventAnalytics: React.FC<EventAnalyticsProps> = ({ metrics }) => {
           title="Average Latency"
           value={`${avgLatencyAcrossAll.toFixed(1)} ms`}
           description="Across all event types"
-          color="yellow"
+          color="yellow"  
           icon={
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
@@ -152,7 +152,7 @@ export const EventAnalytics: React.FC<EventAnalyticsProps> = ({ metrics }) => {
             Top Performers (Lowest Latency)
           </h3>
           <div className="space-y-3">
-            {eventTypes.filter(([, data]) => data.avgLatency < 50)
+            {eventTypes.filter(([, data]) => data.avgLatency <= 50)
               .sort(([, a], [, b]) => a.avgLatency - b.avgLatency)
               .slice(0, 5)
               .map(([type, data], index) => (
