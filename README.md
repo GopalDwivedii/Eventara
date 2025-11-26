@@ -193,31 +193,42 @@ GET http://localhost:8080/api/v1/events?eventType=user.login&limit=100
 ## 🐳 Docker Commands
 
 Start all services
-docker compose up --build -d
+
+`docker compose up --build -d`
 
 View logs
-docker compose logs -f springboot
-docker compose logs -f dashboard
-docker compose logs -f kafka
+
+`docker compose logs -f springboot`
+
+`docker compose logs -f dashboard`
+
+`docker compose logs -f kafka`
 
 Check service status
-docker compose ps
+
+`docker compose ps`
 
 Stop all services
-docker compose down
+
+`docker compose down`
 
 Wipe all data (DB + Kafka)
-docker compose down -v
+
+`docker compose down -v`
 
 Restart specific service
-docker compose restart springboot
-docker compose restart dashboard
+
+`docker compose restart springboot`
+
+`docker compose restart dashboard`
 
 Access PostgreSQL
-docker exec -it postgres14 psql -U postgres -d eventara
+
+`docker exec -it postgres14 psql -U postgres -d eventara`
 
 List Kafka topics
-docker exec -it eventara-kafka kafka-topics --bootstrap-server localhost:9092 --list
+
+`docker exec -it eventara-kafka kafka-topics --bootstrap-server localhost:9092 --list`
 
 ---
 
