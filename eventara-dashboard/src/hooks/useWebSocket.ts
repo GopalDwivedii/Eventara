@@ -7,7 +7,7 @@ interface UseWebSocketMetricsReturn extends UseWebSocketReturn {
   metrics: ComprehensiveMetrics | null;
 }
 
-export const useWebSocketMetrics = (url: string = '/ws'): UseWebSocketMetricsReturn => {
+export const useWebSocketMetrics = (url: string = `${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/ws`): UseWebSocketMetricsReturn => {
   const [metrics, setMetrics] = useState<ComprehensiveMetrics | null>(null);
   const [connectionState, setConnectionState] = useState<ConnectionState>(ConnectionState.CONNECTING);
   const [error, setError] = useState<Error | null>(null);

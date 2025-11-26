@@ -131,6 +131,27 @@ services:
     networks:
       - eventara-network
 
+  # React Dashboard (Development Mode)
+  dashboard:
+    build:
+      context: ./eventara-dashboard
+      dockerfile: Dockerfile.dev
+    container_name: eventara-dashboard
+    restart: unless-stopped
+    depends_on:
+      - springboot
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./eventara-dashboard:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8080
+    networks:
+      - eventara-network
+    stdin_open: true
+    tty: true
+
 volumes:
   postgres_data:
     driver: local
