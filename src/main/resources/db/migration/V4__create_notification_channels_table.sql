@@ -1,10 +1,10 @@
--- Notification channels table
-CREATE TABLE notifications_channels (
+-- Notification Channels Table
+CREATE TABLE notification_channels (
     id BIGSERIAL PRIMARY KEY,
 
-    -- Channel info
+    -- Channel Info
     channel_type VARCHAR(50) NOT NULL,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL UNIQUE,
     description TEXT,
     enabled BOOLEAN NOT NULL DEFAULT true,
 
@@ -26,8 +26,7 @@ CREATE TABLE notifications_channels (
     created_by VARCHAR(255),
 
     CONSTRAINT chk_channel_type CHECK (channel_type IN ('EMAIL', 'SLACK', 'WEBHOOK', 'PAGERDUTY', 'SMS'))
-
 );
 
 CREATE INDEX idx_notification_channels_type ON notification_channels(channel_type);
-CREATE INDEX idx_notification_channels_type ON notification_channels(channel_type);
+CREATE INDEX idx_notification_channels_enabled ON notification_channels(enabled);
