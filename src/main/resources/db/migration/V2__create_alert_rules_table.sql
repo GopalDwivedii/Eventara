@@ -1,4 +1,4 @@
--- alearts rules table
+-- alerts rules table
 CREATE TABLE alert_rules (
     id BIGSERIAL PRIMARY KEY,
 

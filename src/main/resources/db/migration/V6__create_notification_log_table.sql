@@ -1,25 +1,24 @@
--- Notification Log table
-
+-- Notification Log Table
 CREATE TABLE notification_log (
     id BIGSERIAL PRIMARY KEY,
 
-    --References
+    -- References
     alert_id BIGINT REFERENCES alert_history(id) ON DELETE CASCADE,
     channel_id BIGINT REFERENCES notification_channels(id) ON DELETE SET NULL,
 
-    -- Notification info
+    -- Notification Info
     channel_type VARCHAR(50) NOT NULL,
     recipient VARCHAR(500) NOT NULL,
 
-    -- status
+    -- Status
     status VARCHAR(50) NOT NULL,
     sent_at TIMESTAMP,
 
-    --content
+    -- Content
     subject VARCHAR(500),
     message TEXT NOT NULL,
 
-    --Response
+    -- Response
     response_code INTEGER,
     response_body TEXT,
     error_message TEXT,
@@ -35,7 +34,6 @@ CREATE TABLE notification_log (
 
     CONSTRAINT chk_notification_status CHECK (status IN ('PENDING', 'SENT', 'FAILED', 'RETRYING'))
 );
-
 
 CREATE INDEX idx_notification_log_alert_id ON notification_log(alert_id);
 CREATE INDEX idx_notification_log_status ON notification_log(status);
