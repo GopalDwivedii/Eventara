@@ -8,6 +8,8 @@ import com.eventara.rule.dto.response.RuleTestResult;
 import com.eventara.rule.entity.AlertRule;
 import com.eventara.rule.enums.RuleStatus;
 import com.eventara.rule.enums.RuleType;
+import lombok.Builder;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;

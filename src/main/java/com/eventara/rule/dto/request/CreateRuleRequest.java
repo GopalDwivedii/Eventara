@@ -4,17 +4,16 @@ import com.eventara.alert.enums.AlertSeverity;
 import com.eventara.rule.enums.RuleType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Map;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class CreateRuleRequest {
 
     @NotBlank(message = "Rule name is required")
@@ -42,4 +41,5 @@ public class CreateRuleRequest {
     private Integer maxAlertsPerHour;
 
     private String createdBy;
+
 }
